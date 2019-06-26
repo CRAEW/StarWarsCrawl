@@ -22,8 +22,8 @@
      General layout
 ######################################## */
 body {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   font-family: 'Franklin Gothic Book', sans-serif;
   background: url('../astronomy-constellation-dark-998641.jpg') black;
   background-repeat: no-repeat;
@@ -37,7 +37,7 @@ a {
 }
 
 .container {
-  width: 50%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -46,16 +46,31 @@ h1 {
   margin-bottom: 100px;
   color: blue;
   font-size: 60px;
+  text-align: center;
+  margin: 0 25%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 h2 {
-  font-weight: bold;
   margin-bottom: 30px;
+}
+
+h2, p {
+  font-size: 5em;
+  font-weight: bold;
+  letter-spacing: 6px;
+  line-height: 1.5em;
+  text-align: justify;
 }
 
 p {
   margin-bottom: 150px;
-  line-height: 1.5em;
+}
+
+.audio {
+  visibility: hidden;
 }
 
 /* ########################################
@@ -65,8 +80,6 @@ p {
   animation-name: fade-in-out;
   animation-duration: 10s;
   animation-fill-mode: forwards;
-  margin-top: 50%;
-  transform: translate(0, -50%);
 }
 
 @keyframes fade-in-out {
@@ -91,7 +104,7 @@ p {
   width: 100vw;
   height: 100vw;
   animation-name: logoflash;
-  animation-duration: 10s;
+  animation-duration: 5s;
   animation-fill-mode: forwards;
   animation-timing-function: ease-in-out;
   animation-delay: 10s;
@@ -120,36 +133,41 @@ p {
 }
 
 .crawl-container {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  height: 800px;
-  color: #feda4a;
-  /* font-family: 'Pathway Gothic One', sans-serif; */
-  font-size: 500%;
-  font-weight: 600;
-  letter-spacing: 6px;
-  line-height: 150%;
-  perspective: 400px;
-  text-align: justify;
+  width: 100%;
+  height: 65vh;
+  position: absolute;
+  top: 50%
 }
 
-.crawl {
+.crawl-perspective {
   position: relative;
-  top: 9999px;
-  transform-origin: 50% 100%;
-  animation: crawl 60s linear;
-  animation-delay: 20s;
-  animation-play-state:
+  margin: 0 10%;
+  height: 500px;
+  width: 80%;
+  transform: perspective(400px) rotate3d(1, 0, 0, 40deg)
+}
+
+.crawl-content {
+  color: #feda4a;
+  height: 3000px;
+  position: absolute;
+  top: 420%;
+  animation: crawl 100s linear;
+  animation-delay: 10s;
+  animation-play-state;
 }
 
 @keyframes crawl {
   0% {
-    top: 0;
-    transform: rotateX(20deg)  translateZ(0);
+    top: 420%;
   }
+
+  99% {
+    opacity: 1;
+  }
+
   100% {
-    top: -6000px;
-    transform: rotateX(25deg) translateZ(-2500px);
+    top: -4500%;
+    opacity: 0;
   }
 }
